@@ -19,11 +19,47 @@
       "is_approved": true,
       "created_at": "2026-03-13 19:05:08.465813",
       "created_by": "admin"
+    },
+    "2": {
+      "id": 2,
+      "full_name": "oscar",
+      "national_id": "cd544r6yh7jh",
+      "date_of_birth": "1976-09-09",
+      "age": 49,
+      "gender": "M",
+      "education": "Doctorate",
+      "party": "16",
+      "manifesto": "Make Ntinda great again",
+      "address": "Ntinda",
+      "phone": "0785643234",
+      "email": "oscar@gmail.com",
+      "has_criminal_record": false,
+      "years_experience": 3,
+      "is_active": true,
+      "is_approved": true,
+      "created_at": "2026-03-13 19:14:29.379776",
+      "created_by": "admin"
     }
   },
-  "candidate_id_counter": 2,
-  "voting_stations": {},
-  "station_id_counter": 1,
+  "candidate_id_counter": 3,
+  "voting_stations": {
+    "1": {
+      "id": 1,
+      "name": "Ntinda",
+      "location": "Ntinda",
+      "region": "Kampala",
+      "capacity": 200,
+      "registered_voters": 0,
+      "supervisor": "Namaganda",
+      "contact": "0765325467",
+      "opening_time": "09:30",
+      "closing_time": "18:00",
+      "is_active": true,
+      "created_at": "2026-03-13 19:12:40.758225",
+      "created_by": "admin"
+    }
+  },
+  "station_id_counter": 2,
   "polls": {},
   "poll_id_counter": 1,
   "positions": {},
@@ -72,6 +108,36 @@
       "action": "CREATE_CANDIDATE",
       "user": "admin",
       "details": "Created candidate: anna akumu (ID: 1)"
+    },
+    {
+      "timestamp": "2026-03-13 19:10:03.651434",
+      "action": "LOGIN_FAILED",
+      "user": "precious",
+      "details": "Invalid admin credentials"
+    },
+    {
+      "timestamp": "2026-03-13 19:11:30.503521",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:12:40.758252",
+      "action": "CREATE_STATION",
+      "user": "admin",
+      "details": "Created station: Ntinda (ID: 1)"
+    },
+    {
+      "timestamp": "2026-03-13 19:14:29.379806",
+      "action": "CREATE_CANDIDATE",
+      "user": "admin",
+      "details": "Created candidate: oscar (ID: 2)"
+    },
+    {
+      "timestamp": "2026-03-13 19:15:34.872057",
+      "action": "LOGOUT",
+      "user": "admin",
+      "details": "Admin logged out"
     }
   ]
 }
