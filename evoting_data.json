@@ -60,12 +60,68 @@
     }
   },
   "station_id_counter": 2,
-  "polls": {},
-  "poll_id_counter": 1,
-  "positions": {},
-  "position_id_counter": 1,
-  "voters": {},
-  "voter_id_counter": 1,
+  "polls": {
+    "1": {
+      "id": 1,
+      "title": "chairman",
+      "description": "election",
+      "election_type": "general",
+      "start_date": "2026-03-12",
+      "end_date": "2026-04-02",
+      "positions": [
+        {
+          "position_id": 1,
+          "position_title": "chairman",
+          "candidate_ids": [],
+          "max_winners": 2
+        }
+      ],
+      "station_ids": [
+        1
+      ],
+      "status": "draft",
+      "total_votes_cast": 0,
+      "created_at": "2026-03-13 19:28:03.497518",
+      "created_by": "admin"
+    }
+  },
+  "poll_id_counter": 2,
+  "positions": {
+    "1": {
+      "id": 1,
+      "title": "chairman",
+      "description": "election",
+      "level": "Local",
+      "max_winners": 2,
+      "min_candidate_age": 27,
+      "is_active": true,
+      "created_at": "2026-03-13 19:26:58.649721",
+      "created_by": "admin"
+    }
+  },
+  "position_id_counter": 2,
+  "voters": {
+    "1": {
+      "id": 1,
+      "full_name": "jojo jo",
+      "national_id": "cmf5t67yh45r6",
+      "date_of_birth": "1976-05-03",
+      "age": 49,
+      "gender": "M",
+      "address": "Ntinda",
+      "phone": "0392963817",
+      "email": "jojo@gmail.com",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "voter_card_number": "57K7ZUOLJKGD",
+      "station_id": 1,
+      "is_verified": true,
+      "is_active": true,
+      "has_voted_in": [],
+      "registered_at": "2026-03-13 19:21:01.101682",
+      "role": "voter"
+    }
+  },
+  "voter_id_counter": 2,
   "admins": {
     "1": {
       "id": 1,
@@ -138,6 +194,96 @@
       "action": "LOGOUT",
       "user": "admin",
       "details": "Admin logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:18:53.891008",
+      "action": "LOGIN_FAILED",
+      "user": "",
+      "details": "Invalid voter credentials"
+    },
+    {
+      "timestamp": "2026-03-13 19:19:39.791938",
+      "action": "LOGIN_FAILED",
+      "user": "",
+      "details": "Invalid voter credentials"
+    },
+    {
+      "timestamp": "2026-03-13 19:21:01.101696",
+      "action": "REGISTER",
+      "user": "jojo jo",
+      "details": "New voter registered with card: 57K7ZUOLJKGD"
+    },
+    {
+      "timestamp": "2026-03-13 19:21:30.039015",
+      "action": "LOGIN_FAILED",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter not verified"
+    },
+    {
+      "timestamp": "2026-03-13 19:21:42.980151",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:19.631801",
+      "action": "VERIFY_ALL_VOTERS",
+      "user": "admin",
+      "details": "Verified 1 voters"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:24.215350",
+      "action": "LOGOUT",
+      "user": "admin",
+      "details": "Admin logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:36.013761",
+      "action": "LOGIN",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:48.467819",
+      "action": "LOGOUT",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:56.029652",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:26:58.649747",
+      "action": "CREATE_POSITION",
+      "user": "admin",
+      "details": "Created position: chairman (ID: 1)"
+    },
+    {
+      "timestamp": "2026-03-13 19:28:03.497577",
+      "action": "CREATE_POLL",
+      "user": "admin",
+      "details": "Created poll: chairman (ID: 1)"
+    },
+    {
+      "timestamp": "2026-03-13 19:28:52.559205",
+      "action": "LOGOUT",
+      "user": "admin",
+      "details": "Admin logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:29:07.018743",
+      "action": "LOGIN",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:29:41.389253",
+      "action": "LOGOUT",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter logged out"
     }
   ]
 }
