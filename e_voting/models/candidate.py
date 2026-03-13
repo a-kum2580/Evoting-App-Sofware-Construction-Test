@@ -22,7 +22,8 @@ class Candidate:
         education: Highest education level attained.
         party: Political party or affiliation name.
         has_criminal_record: Candidates with records are rejected.
-        is_active: Soft-delete flag (False = deac
+        is_active: Soft-delete flag (False = deactivated).
+    """
 
     def __init__(self, candidate_id, full_name, national_id, date_of_birth,
                  age, gender, education, party, manifesto, address, phone,
