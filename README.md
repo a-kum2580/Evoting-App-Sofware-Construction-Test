@@ -24,14 +24,14 @@
 
 From the exam instructions:
 
-> *"Refactor this monolith into a modular, object-oriented Python project. The application must behave identically after refactoring — same menus, same prompts, same outputs. Do not add new features."*
+> *"Refactor this monolith into a modular, object-oriented Python project. The application must behave identically after refactoring same menus, same prompts, same outputs. Do not add new features."*
 
 The four principles to apply:
 
-1. **Modular Design** — Logical file separation, single responsibilities
-2. **Object-Oriented Design** — Proper classes, encapsulation, meaningful methods
-3. **Separation of Concerns** — UI, logic, and data layers fully decoupled
-4. **Clean Code** — Naming, readability, no duplication
+1. **Modular Design** : Logical file separation, single responsibilities
+2. **Object-Oriented Design** : Proper classes, encapsulation, meaningful methods
+3. **Separation of Concerns** : UI, logic, and data layers fully decoupled
+4. **Clean Code** : Naming, readability, no duplication
 
 Deliverables:
 
@@ -56,7 +56,7 @@ The original **1 file with 1,632 lines** and **62 top-level functions** was deco
 | Original Problem | Refactored Solution |
 |---|---|
 | Data stored as plain dictionaries in global variables | 8 model classes with proper encapsulation (`Candidate`, `Voter`, `Admin`, `Poll`, `PollPosition`, `Position`, `Vote`, `VotingStation`) |
-| No methods on data — logic scattered across functions | Domain methods on models: `voter.has_voted_in_poll()`, `poll.has_any_candidates()`, `candidate.is_eligible_for_position()`, `poll.open_poll()`, `voter.record_vote()` |
+| No methods on data logic scattered across functions | Domain methods on models: `voter.has_voted_in_poll()`, `poll.has_any_candidates()`, `candidate.is_eligible_for_position()`, `poll.open_poll()`, `voter.record_vote()` |
 | 14+ global variables for state | Single `DataStore` class encapsulates all state with managed access |
 | No serialisation abstraction | Each model provides `to_dict()` / `from_dict()` methods for JSON persistence |
 | No constructor injection | All services and UI classes receive dependencies via constructors (Dependency Inversion Principle) |
@@ -76,7 +76,7 @@ The monolith mixed input reading, business validation, data mutation, and output
 ```
 
 **Rules enforced:**
-- **UI classes** never mutate the DataStore directly — they call services
+- **UI classes** never mutate the DataStore directly they call services
 - **Service classes** never print to the console or read user input
 - **Model classes** never call services or perform I/O
 - Dependencies flow downward only (UI → Services → Data)
@@ -89,7 +89,7 @@ The monolith mixed input reading, business validation, data mutation, and output
 | **Meaningful names** | Functions like `get_eligible_candidates()`, `calculate_turnout()`, `is_national_id_unique()` instead of vague names |
 | **DRY (Don't Repeat Yourself)** | Shared UI formatting centralised in `console.py`; repeated validation extracted into service methods |
 | **No mixed responsibilities** | Every function either computes or displays, never both |
-| **Docstrings & comments** | Module-level docstrings on all 26 files, class docstrings, method docstrings explaining business intent, section headers for logical groupings |
+| **Docstrings & comments** | Module level docstrings on all 26 files, class docstrings, method docstrings explaining business intent, section headers for logical groupings |
 | **Consistent return conventions** | Services return `(result, None)` on success or `(None, error_message)` on failure throughout |
 
 ### 5. Working Application
@@ -173,13 +173,13 @@ The exam explicitly required **Separation of Concerns** between UI, logic, and d
 - **Service Layer** (`services/`): Enforces all business rules, never prints or reads input
 - **Data Layer** (`store.py` + `models/`): Manages persistence and domain state
 
-### Why Constructor-Based Dependency Injection?
+### Why Constructor Based Dependency Injection?
 
-All services receive the `DataStore` via their constructor. All UI classes receive their required services via constructors. This follows the **Dependency Inversion Principle** — high-level modules (UI) depend on abstractions (services), not on concrete data manipulation. It also makes the dependency graph explicit in `app.py`.
+All services receive the `DataStore` via their constructor. All UI classes receive their required services via constructors. This follows the **Dependency Inversion Principle** high-level modules (UI) depend on abstractions (services), not on concrete data manipulation. It also makes the dependency graph explicit in `app.py`.
 
 ### Why a Centralised DataStore Instead of Individual Repositories?
 
-The original script used 14+ global variables. A full repository-per-entity pattern would be over-engineered for a JSON-file-based console app. The `DataStore` class strikes a balance: it eliminates global state while keeping the persistence layer simple and matching the original single-file JSON format.
+The original script used 14+ global variables. A full repository-per-entity pattern would be over-engineered for a JSON-file-based console app. The `DataStore` class strikes a balance: it eliminates global state while keeping the persistence layer simple and matching the original single file JSON format.
 
 ### Why Split admin_ui.py into a Sub-Package?
 
@@ -192,7 +192,7 @@ Dataclasses would reduce boilerplate, but the models need custom `to_dict()`/`fr
 
 ## SOLID Principles Applied
 
-### S — Single Responsibility Principle (SRP)
+### S - Single Responsibility Principle (SRP)
 
 > *"A class should have only one reason to change."*
 
@@ -215,7 +215,7 @@ Every class in the project has exactly one well-defined responsibility:
 - `CandidateService.create()` — validates and creates the record
 - `DataStore.save()` — persists to JSON
 
-### O — Open/Closed Principle (OCP)
+### O - Open/Closed Principle (OCP)
 
 > *"Software entities should be open for extension but closed for modification."*
 
@@ -231,13 +231,13 @@ admin_actions = {
 }
 ```
 
-**2. Backwards-compatible JSON deserialisation:**
+**2. Backwards compatible JSON deserialisation:**
 ```python
 # candidate.py — new fields use .get() with defaults, so old JSON files still load
 has_criminal_record=data.get("has_criminal_record", False),
 years_experience=data.get("years_experience", 0),
 ```
-Adding a new field to a model requires only adding it to `__init__`, `to_dict()`, and `from_dict()` with a default — no changes to `DataStore.save()` or `DataStore.load()`.
+Adding a new field to a model requires only adding it to `__init__`, `to_dict()`, and `from_dict()` with a default no changes to `DataStore.save()` or `DataStore.load()`.
 
 **3. Centralised constants:**
 ```python
@@ -251,7 +251,7 @@ Business rules can be changed by modifying `constants.py` without touching any s
 
 > *"Objects of a superclass should be replaceable with objects of a subclass without breaking the application."*
 
-While the project does not use deep inheritance hierarchies (which is itself a best practice — "prefer composition over inheritance"), LSP is demonstrated through **polymorphic usage** of `current_user`:
+While the project does not use deep inheritance hierarchies (which is itself a best practice "prefer composition over inheritance"), LSP is demonstrated through **polymorphic usage** of `current_user`:
 
 ```python
 # store.py — current_user can be either an Admin or a Voter object
@@ -266,7 +266,7 @@ elif store.current_role == "voter":
 
 Both `Admin` and `Voter` expose `.full_name`, `.id`, and can be stored in `current_user` without the caller needing to know which type it is. Neither breaks the application when substituted.
 
-All 7 model classes also implement the same serialisation contract (`to_dict()` / `from_dict()`) — `DataStore.save()` and `DataStore.load()` call these methods polymorphically without caring which specific model they're operating on.
+All 7 model classes also implement the same serialisation contract (`to_dict()` / `from_dict()`) `DataStore.save()` and `DataStore.load()` call these methods polymorphically without caring which specific model they're operating on.
 
 ### I — Interface Segregation Principle (ISP)
 
@@ -296,10 +296,10 @@ AdminUI (composed of 6 screen handlers, each receiving only its own services):
 
 > *"High-level modules should not depend on low-level modules. Both should depend on abstractions."*
 
-This is the most pervasive SOLID principle in the project. **No class creates its own dependencies** — everything is injected via constructors:
+This is the most pervasive SOLID principle in the project. **No class creates its own dependencies**  everything is injected via constructors:
 
 ```python
-# app.py — the composition root wires all dependencies
+# app.py the composition root wires all dependencies
 store = DataStore()                          # Low-level: data layer
 
 auth_service = AuthService(store)            # Mid-level: services receive store
@@ -341,13 +341,13 @@ Each model class owns its data and provides meaningful methods to interact with 
 
 **Before:** External code directly checked `candidates[cid]["is_active"] and candidates[cid]["is_approved"] and candidates[cid]["age"] >= min_age`.
 
-**After:** External code calls `candidate.is_eligible_for_position(min_age)` — the logic is encapsulated, readable, and changeable in one place.
+**After:** External code calls `candidate.is_eligible_for_position(min_age)`  the logic is encapsulated, readable, and changeable in one place.
 
 ### 2. Abstraction
 
 > *"Expose only essential features and hide implementation complexity."*
 
-Services provide simple, high-level interfaces that hide complex multi-step operations:
+Services provide simple, high-level interfaces that hide complex multi step operations:
 
 ```python
 # The UI calls one simple method:
@@ -387,7 +387,7 @@ The project uses **composition** throughout instead of inheritance:
           self.voting_stations = {} # int -> VotingStation
   ```
 
-- **`AdminUI` composes 6 screen handlers** — it *has* a `CandidateScreens`, a `PollScreens`, etc. rather than inheriting from a base class:
+- **`AdminUI` composes 6 screen handlers**  it *has* a `CandidateScreens`, a `PollScreens`, etc. rather than inheriting from a base class:
   ```python
   class AdminUI:
       def __init__(self, store, candidate_service, station_service, poll_service, ...):
@@ -398,7 +398,7 @@ The project uses **composition** throughout instead of inheritance:
 
   Each screen handler in turn composes the services it needs, continuing the composition chain.
 
-No class in the project extends another class. All relationships are composition-based.
+No class in the project extends another class. All relationships are composition based.
 
 ### 4. Polymorphism
 
@@ -412,7 +412,7 @@ No class in the project extends another class. All relationships are composition
   "polls":      {str(k): v.to_dict() for k, v in self.polls.items()},
   ```
 
-- **Soft-delete polymorphism:** `Candidate`, `Voter`, `Admin`, `VotingStation`, and `Position` all implement `deactivate()`. Services call `entity.deactivate()` without type-specific logic.
+- **Soft delete polymorphism:** `Candidate`, `Voter`, `Admin`, `VotingStation`, and `Position` all implement `deactivate()`. Services call `entity.deactivate()` without type specific logic.
 
 - **Session polymorphism:** Both `Admin` and `Voter` objects are stored in `store.current_user` and accessed through a common set of attributes (`.id`, `.full_name`).
 
@@ -431,7 +431,7 @@ No class in the project extends another class. All relationships are composition
 
 ### KISS — Keep It Simple, Stupid
 
-- Three-layer architecture instead of over-engineering with microservices, event buses, or abstract factories
+- Three-layer architecture instead of over engineering with microservices, event buses, or abstract factories
 - Simple dictionary-based collections instead of a full ORM or database
 - Plain classes instead of metaclasses, decorators, or framework magic
 - One `DataStore` instead of 7 separate repository classes
@@ -460,7 +460,7 @@ Each module groups tightly related functionality:
 
 ### Low Coupling
 
-Modules interact through narrow, well-defined interfaces:
+Modules interact through narrow, well defined interfaces:
 
 - Services depend only on `DataStore` (one dependency each)
 - UI classes depend on services through constructor injection (not global imports)
@@ -499,7 +499,7 @@ Modules interact through narrow, well-defined interfaces:
 | **No type hints** | While type hints improve readability, the original code had none. Adding them across 26 files would be a significant change not required by the exam. The comprehensive docstrings serve a similar documentation purpose. |
 | **No configuration file (YAML/TOML)** | Constants are centralised in `constants.py` which is sufficient for this application's scale. An external config file would add deployment complexity not justified by the requirements. |
 | **No logging framework** | The original uses a custom audit log (list of dicts). Replacing it with Python's `logging` module would change the audit log format and break identical behaviour. |
-| **No role-based access enforcement in services** | The original code does not enforce role checks in business logic — it relies on the UI showing different menus to different roles. Moving role checks into services would change the architecture and potentially alter behaviour edge cases. The original pattern was preserved. |
+| **No role-based access enforcement in services** | The original code does not enforce role checks in business logic it relies on the UI showing different menus to different roles. Moving role checks into services would change the architecture and potentially alter behaviour edge cases. The original pattern was preserved. |
 
 
 ## How to Run
@@ -536,7 +536,7 @@ All features from the original monolith work identically:
 - Voter demographics breakdown (gender, age groups)
 - Station load analysis (capacity utilisation warnings)
 - Party and education distribution reports
-- Station-by-station result breakdowns
+- Station by station result breakdowns
 - Filtered audit log (by action type, by user, last N entries)
 - JSON data persistence (`evoting_data.json`)
 - Masked password input with yellow asterisks
