@@ -1,4 +1,4 @@
-##E-Voting System — Refactored
+## E-Voting System — Refactored
 
 **Course:** BsCS Software Construction, Year 3.2, Easter 2026 Semester  
 **University:** Uganda Christian University  
