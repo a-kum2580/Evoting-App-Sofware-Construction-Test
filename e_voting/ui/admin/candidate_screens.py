@@ -260,4 +260,4 @@ class CandidateScreens:
                 print(f"  {candidate.id:<{col_id}} {candidate.full_name:<{col_name}} "
                       f"{candidate.party:<{col_party}} {candidate.age:<{col_age}} "
                       f"{candidate.education:<{col_edu}}")
-        pause()
+        pause() 
