@@ -119,7 +119,19 @@ class Poll:
         has candidates assigned to it."""
         return any(pos.has_candidates() for pos in self.positions)
 
-    
+    # ── State transition methods ─────────────────────────────
+
+    def open_poll(self):
+        """Transition from DRAFT (or CLOSED) to OPEN — begins voting."""
+        self.status = self.OPEN
+
+    def close_poll(self):
+        """Transition from OPEN to CLOSED — stops accepting votes."""
+        self.status = self.CLOSED
+
+    def record_vote(self):
+        """Increment the running vote counter after a ballot is cast."""
+        self.total_votes_cast += 1
 
     # ── Serialisation ────────────────────────────────────────
 
