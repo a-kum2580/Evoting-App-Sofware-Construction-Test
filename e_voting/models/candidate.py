@@ -1,10 +1,28 @@
+"""
+Candidate model — Represents an election candidate.
 
+A candidate is a person who has been registered by an admin to
+stand for one or more elective positions within a poll. Eligibility
+depends on age, education level, and absence of a criminal record.
+These rules are enforced by the CandidateService at creation time.
+"""
 
 import datetime
 
 
 class Candidate:
-    
+    """Domain entity for an election candidate.
+
+    Attributes:
+        id: Unique auto-incremented identifier.
+        full_name: Legal full name of the candidate.
+        national_id: Government-issued national ID (must be unique).
+        date_of_birth: Date string in YYYY-MM-DD format.
+        age: Computed age at the time of registration.
+        education: Highest education level attained.
+        party: Political party or affiliation name.
+        has_criminal_record: Candidates with records are rejected.
+        is_active: Soft-delete flag (False = deac
 
     def __init__(self, candidate_id, full_name, national_id, date_of_birth,
                  age, gender, education, party, manifesto, address, phone,
