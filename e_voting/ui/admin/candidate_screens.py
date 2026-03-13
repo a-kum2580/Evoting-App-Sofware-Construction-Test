@@ -85,4 +85,142 @@ class CandidateScreens:
                 f"ID: {candidate.id}")
         pause()
 
-    
+    def view_all(self):
+        clear_screen()
+        header("ALL CANDIDATES", THEME_ADMIN)
+        candidates = self._candidates.get_all()
+        if not candidates:
+            print(); info("No candidates found."); pause(); return
+        print()
+        col_id, col_name, col_party, col_age, col_edu, col_status = 5, 25, 20, 5, 20, 10
+        table_width = col_id + col_name + col_party + col_age + col_edu + col_status
+        table_header(
+            f"{'ID':<{col_id}} {'Name':<{col_name}} {'Party':<{col_party}} {'Age':<{col_age}} "
+            f"{'Education':<{col_edu}} {'Status':<{col_status}}", THEME_ADMIN
+        )
+        table_divider(table_width, THEME_ADMIN)
+        for candidate in candidates.values():
+            status = (status_badge("Active", True) if candidate.is_active
+                      else status_badge("Inactive", False))
+            print(f"  {candidate.id:<{col_id}} {candidate.full_name:<{col_name}} "
+                  f"{candidate.party:<{col_party}} {candidate.age:<{col_age}} "
+                  f"{candidate.education:<{col_edu}} {status}")
+        print(f"\n  {DIM}Total Candidates: {len(candidates)}{RESET}")
+        pause()
+
+    def update(self):
+        clear_screen()
+        header("UPDATE CANDIDATE", THEME_ADMIN)
+        candidates = self._candidates.get_all()
+        if not candidates:
+            print(); info("No candidates found."); pause(); return
+        print()
+        for candidate in candidates.values():
+            print(f"  {THEME_ADMIN}{candidate.id}.{RESET} "
+                  f"{candidate.full_name} {DIM}({candidate.party}){RESET}")
+        try:
+            cid = int(prompt("\nEnter Candidate ID to update: "))
+        except ValueError:
+            error("Invalid input."); pause(); return
+        candidate = self._candidates.get(cid)
+        if not candidate:
+            error("Candidate not found."); pause(); return
+
+        print(f"\n  {BOLD}Updating: {candidate.full_name}{RESET}")
+        info("Press Enter to keep current value\n")
+        updates = {}
+        new_name = prompt(f"Full Name [{candidate.full_name}]: ")
+        if new_name:
+            updates["full_name"] = new_name
+        new_party = prompt(f"Party [{candidate.party}]: ")
+        if new_party:
+            updates["party"] = new_party
+        new_manifesto = prompt(
+            f"Manifesto [{candidate.manifesto[:PREVIEW_MAX_LENGTH]}...]: "
+        )
+        if new_manifesto:
+            updates["manifesto"] = new_manifesto
+        new_phone = prompt(f"Phone [{candidate.phone}]: ")
+        if new_phone:
+            updates["phone"] = new_phone
+        new_email = prompt(f"Email [{candidate.email}]: ")
+        if new_email:
+            updates["email"] = new_email
+        new_address = prompt(f"Address [{candidate.address}]: ")
+        if new_address:
+            updates["address"] = new_address
+        new_exp = prompt(
+            f"Years Experience [{candidate.years_experience}]: "
+        )
+        if new_exp:
+            try:
+                updates["years_experience"] = int(new_exp)
+            except ValueError:
+                warning("Invalid number, keeping old value.")
+
+        self._candidates.update(
+            cid, updates, self._store.current_user.username
+        )
+        print()
+        name = updates.get("full_name", candidate.full_name)
+        success(f"Candidate '{name}' updated successfully!")
+        pause()
+
+   
+
+    def search(self):
+        clear_screen()
+        header("SEARCH CANDIDATES", THEME_ADMIN)
+        subheader("Search by", THEME_ADMIN_ACCENT)
+        menu_item(1, "Name", THEME_ADMIN)
+        menu_item(2, "Party", THEME_ADMIN)
+        menu_item(3, "Education Level", THEME_ADMIN)
+        menu_item(4, "Age Range", THEME_ADMIN)
+        choice = prompt("\nChoice: ")
+
+        results = []
+        if choice == "1":
+            term = prompt("Enter name to search: ")
+            results = self._candidates.search_by_name(term)
+        elif choice == "2":
+            term = prompt("Enter party name: ")
+            results = self._candidates.search_by_party(term)
+        elif choice == "3":
+            subheader("Education Levels", THEME_ADMIN_ACCENT)
+            for i, level in enumerate(REQUIRED_EDUCATION_LEVELS, 1):
+                print(f"    {THEME_ADMIN}{i}.{RESET} {level}")
+            try:
+                edu_choice = int(prompt("Select: "))
+                edu = REQUIRED_EDUCATION_LEVELS[edu_choice - 1]
+                results = self._candidates.search_by_education(edu)
+            except (ValueError, IndexError):
+                error("Invalid choice."); pause(); return
+        elif choice == "4":
+            try:
+                min_age = int(prompt("Min age: "))
+                max_age = int(prompt("Max age: "))
+                results = self._candidates.search_by_age_range(
+                    min_age, max_age
+                )
+            except ValueError:
+                error("Invalid input."); pause(); return
+        else:
+            error("Invalid choice."); pause(); return
+
+        if not results:
+            print()
+            info("No candidates found matching your criteria.")
+        else:
+            print(f"\n  {BOLD}Found {len(results)} candidate(s):{RESET}")
+            col_id, col_name, col_party, col_age, col_edu = 5, 25, 20, 5, 20
+            table_width = col_id + col_name + col_party + col_age + col_edu
+            table_header(
+                f"{'ID':<{col_id}} {'Name':<{col_name}} {'Party':<{col_party}} {'Age':<{col_age}} "
+                f"{'Education':<{col_edu}}", THEME_ADMIN
+            )
+            table_divider(table_width, THEME_ADMIN)
+            for candidate in results:
+                print(f"  {candidate.id:<{col_id}} {candidate.full_name:<{col_name}} "
+                      f"{candidate.party:<{col_party}} {candidate.age:<{col_age}} "
+                      f"{candidate.education:<{col_edu}}")
+        pause()
