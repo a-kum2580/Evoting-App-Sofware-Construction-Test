@@ -166,7 +166,44 @@ class CandidateScreens:
         success(f"Candidate '{name}' updated successfully!")
         pause()
 
-   
+    def delete(self):
+        clear_screen()
+        header("DELETE CANDIDATE", THEME_ADMIN)
+        candidates = self._candidates.get_all()
+        if not candidates:
+            print(); info("No candidates found."); pause(); return
+        print()
+        for candidate in candidates.values():
+            status = (status_badge("Active", True) if candidate.is_active
+                      else status_badge("Inactive", False))
+            print(f"  {THEME_ADMIN}{candidate.id}.{RESET} "
+                  f"{candidate.full_name} {DIM}({candidate.party}){RESET} "
+                  f"{status}")
+        try:
+            cid = int(prompt("\nEnter Candidate ID to delete: "))
+        except ValueError:
+            error("Invalid input."); pause(); return
+        if not self._candidates.get(cid):
+            error("Candidate not found."); pause(); return
+
+        can_delete, reason = self._candidates.can_deactivate(cid)
+        if not can_delete:
+            error(reason); pause(); return
+
+        candidate = self._candidates.get(cid)
+        confirm = prompt(
+            f"Are you sure you want to delete "
+            f"'{candidate.full_name}'? (yes/no): "
+        ).lower()
+        if confirm == "yes":
+            self._candidates.deactivate(
+                cid, self._store.current_user.username
+            )
+            print()
+            success(f"Candidate '{candidate.full_name}' has been deactivated.")
+        else:
+            info("Deletion cancelled.")
+        pause()
 
     def search(self):
         clear_screen()
