@@ -44,7 +44,7 @@ Deliverables:
 
 ## What Was Implemented
 
-### 1. Modular Design (25% weight) — FULLY IMPLEMENTED
+### 1. Modular Design (25% weight)
 
 The original **1 file with 1,632 lines** and **62 top-level functions** was decomposed into **32 focused source files** organised into a clear package hierarchy:
 
@@ -55,7 +55,7 @@ The original **1 file with 1,632 lines** and **62 top-level functions** was deco
 | No logical grouping | Each file has a single, clear responsibility |
 | 1,632 lines in one file | Files range from 12–280 lines; the admin dashboard is further split into 6 focused screen modules |
 
-### 2. Object-Oriented Design (20% weight) — FULLY IMPLEMENTED
+### 2. Object-Oriented Design (20% weight) 
 
 | Original Problem | Refactored Solution |
 |---|---|
@@ -65,7 +65,7 @@ The original **1 file with 1,632 lines** and **62 top-level functions** was deco
 | No serialisation abstraction | Each model provides `to_dict()` / `from_dict()` methods for JSON persistence |
 | No constructor injection | All services and UI classes receive dependencies via constructors (Dependency Inversion Principle) |
 
-### 3. Separation of Concerns (20% weight) — FULLY IMPLEMENTED
+### 3. Separation of Concerns (20% weight)
 
 The monolith mixed input reading, business validation, data mutation, and output formatting in the same functions. The refactored code has three strictly separated layers:
 
@@ -85,7 +85,7 @@ The monolith mixed input reading, business validation, data mutation, and output
 - **Model classes** never call services or perform I/O
 - Dependencies flow downward only (UI → Services → Data)
 
-### 4. Clean Code Quality (15% weight) — FULLY IMPLEMENTED
+### 4. Clean Code Quality (15% weight)
 
 | Practice | What Was Done |
 |---|---|
@@ -96,7 +96,7 @@ The monolith mixed input reading, business validation, data mutation, and output
 | **Docstrings & comments** | Module-level docstrings on all 26 files, class docstrings, method docstrings explaining business intent, section headers for logical groupings |
 | **Consistent return conventions** | Services return `(result, None)` on success or `(None, error_message)` on failure throughout |
 
-### 5. Working Application (10% weight) — FULLY IMPLEMENTED
+### 5. Working Application (10% weight)
 
 Every original feature was tested and works identically:
 
@@ -563,8 +563,8 @@ All features from the original monolith work identically:
 
 | Member | Modules | Focus Area |
 |---|---|---|
-| ** Mukama Joseph** | `constants.py`, `models/` (all 7 model files) | Data layer — domain models, named constants, persistence |
-| **Anna Akumu** | `ui/console.py`, `ui/auth_ui.py`, `services/auth_service.py`, `services/station_service.py`, `services/candidate_service.py`,`store.py` | UI framework — colors, formatting, authentication flow |
-| ** Namaganda Precious.W** |   `ui/admin/candidate_screens.py`, `ui/admin/station_screens.py`, `ui/admin/poll_screens.py`, `ui/admin/voter_screens.py`, | Candidate & station management |
-| **Odongkara Oscar** | `services/poll_service.py`, `services/vote_service.py`, `services/voter_service.py`, `services/admin_service.py`, `ui/admin/admin_mgmt_screens.py` | Poll lifecycle, voting process, voter/admin management |
-| **Orianga Absolom.Jr** | `services/result_service.py`, `ui/voter_ui.py`, `ui/admin/results_screens.py`, `ui/admin/admin_ui.py`, `ui/admin/__init__.py`, `app.py`, `README.md` | Results & reports, voter UI, admin coordinator, integration, documentation |
+| ** Mukama Joseph B24267** | `constants.py`, `models/` (all 7 model files) | Data layer — domain models, named constants, persistence |
+| **Anna Akumu B24782** | `ui/console.py`, `ui/auth_ui.py`, `services/auth_service.py`, `services/station_service.py`, `services/candidate_service.py`,`store.py` | UI framework — colors, formatting, authentication flow |
+| ** Namaganda Precious.W B24745** |   `ui/admin/candidate_screens.py`, `ui/admin/station_screens.py`, `ui/admin/poll_screens.py`, `ui/admin/voter_screens.py`, | Candidate & station management |
+| **Odongkara Oscar ** | `services/poll_service.py`, `services/vote_service.py`, `services/voter_service.py`, `services/admin_service.py`, `ui/admin/admin_mgmt_screens.py` | Poll lifecycle, voting process, voter/admin management |
+| **Orianga Absolom.Jr B20098** | `services/result_service.py`, `ui/voter_ui.py`, `ui/admin/results_screens.py`, `ui/admin/admin_ui.py`, `ui/admin/__init__.py`, `app.py`, `README.md` | Results & reports, voter UI, admin coordinator, integration, documentation |
