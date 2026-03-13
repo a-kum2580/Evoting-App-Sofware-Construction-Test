@@ -43,7 +43,7 @@ Deliverables:
 
 ### 1. Modular Design
 
-The original **1 file with 1,632 lines** and **62 top-level functions** was decomposed into **32 focused source files** organised into a clear package hierarchy:
+The original **1 file with 1,632 lines** and **62 top-level functions** was decomposed into **33 focused source files** organised into a clear package hierarchy:
 
 | Original Problem | Refactored Solution |
 |---|---|
@@ -55,7 +55,7 @@ The original **1 file with 1,632 lines** and **62 top-level functions** was deco
 ### 2. Object-Oriented Design
 | Original Problem | Refactored Solution |
 |---|---|
-| Data stored as plain dictionaries in global variables | 7 model classes with proper encapsulation (`Candidate`, `Voter`, `Admin`, `Poll`, `PollPosition`, `Position`, `Vote`, `VotingStation`) |
+| Data stored as plain dictionaries in global variables | 8 model classes with proper encapsulation (`Candidate`, `Voter`, `Admin`, `Poll`, `PollPosition`, `Position`, `Vote`, `VotingStation`) |
 | No methods on data — logic scattered across functions | Domain methods on models: `voter.has_voted_in_poll()`, `poll.has_any_candidates()`, `candidate.is_eligible_for_position()`, `poll.open_poll()`, `voter.record_vote()` |
 | 14+ global variables for state | Single `DataStore` class encapsulates all state with managed access |
 | No serialisation abstraction | Each model provides `to_dict()` / `from_dict()` methods for JSON persistence |
@@ -114,8 +114,6 @@ Every original feature was tested and works:
 - Masked password input with yellow asterisks (cross-platform)
 - ANSI-colored console interface with themed screens
 
-### 6. Report(THIS README)
-
 
 ## Project Structure
 
@@ -159,11 +157,10 @@ software-construction/
 │           ├── voter_screens.py        # VoterScreens — view, verify, deactivate, search (~140 lines)
 │           ├── admin_mgmt_screens.py   # AdminMgmtScreens — create, view, deactivate (~100 lines)
 │           └── results_screens.py      # ResultsScreens — results, stats, audit log (~250 lines)
-├── e_voting_console_app.py             # Original monolith (kept as reference)
 └── README.md                           # This report
 ```
 
-**32 source files** with clear single responsibilities, compared to the original **1 file** with mixed concerns.
+**33 source files** with clear single responsibilities, compared to the original **1 file** with mixed concerns.
 
 
 ## Architecture & Design Decisions
