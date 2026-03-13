@@ -22,7 +22,7 @@
 
 ---
 
-## What Was Required
+## What Is Required
 
 From the exam instructions:
 
@@ -44,7 +44,7 @@ Deliverables:
 
 ## What Was Implemented
 
-### 1. Modular Design (25% weight)
+### 1. Modular Design
 
 The original **1 file with 1,632 lines** and **62 top-level functions** was decomposed into **32 focused source files** organised into a clear package hierarchy:
 
@@ -55,8 +55,7 @@ The original **1 file with 1,632 lines** and **62 top-level functions** was deco
 | No logical grouping | Each file has a single, clear responsibility |
 | 1,632 lines in one file | Files range from 12–280 lines; the admin dashboard is further split into 6 focused screen modules |
 
-### 2. Object-Oriented Design (20% weight) 
-
+### 2. Object-Oriented Design
 | Original Problem | Refactored Solution |
 |---|---|
 | Data stored as plain dictionaries in global variables | 7 model classes with proper encapsulation (`Candidate`, `Voter`, `Admin`, `Poll`, `PollPosition`, `Position`, `Vote`, `VotingStation`) |
@@ -65,7 +64,7 @@ The original **1 file with 1,632 lines** and **62 top-level functions** was deco
 | No serialisation abstraction | Each model provides `to_dict()` / `from_dict()` methods for JSON persistence |
 | No constructor injection | All services and UI classes receive dependencies via constructors (Dependency Inversion Principle) |
 
-### 3. Separation of Concerns (20% weight)
+### 3. Separation of Concerns 
 
 The monolith mixed input reading, business validation, data mutation, and output formatting in the same functions. The refactored code has three strictly separated layers:
 
@@ -85,7 +84,7 @@ The monolith mixed input reading, business validation, data mutation, and output
 - **Model classes** never call services or perform I/O
 - Dependencies flow downward only (UI → Services → Data)
 
-### 4. Clean Code Quality (15% weight)
+### 4. Clean Code Quality
 
 | Practice | What Was Done |
 |---|---|
@@ -96,7 +95,7 @@ The monolith mixed input reading, business validation, data mutation, and output
 | **Docstrings & comments** | Module-level docstrings on all 26 files, class docstrings, method docstrings explaining business intent, section headers for logical groupings |
 | **Consistent return conventions** | Services return `(result, None)` on success or `(None, error_message)` on failure throughout |
 
-### 5. Working Application (10% weight)
+### 5. Working Application
 
 Every original feature was tested and works identically:
 
