@@ -3,11 +3,11 @@ DataStore — Central data persistence and session management layer.
 
 This module replaces the 14+ global variables from the original monolith
 with a single DataStore class that:
-  1. Holds all entity collections (candidates, voters, polls, etc.)
-  2. Manages auto-incrementing ID counters for each entity type
-  3. Tracks the current logged-in user (session state)
-  4. Handles JSON serialisation/deserialisation for persistence
-  5. Records all actions to an audit log
+  1. Holds all entity collections (candidates, voters, polls, etc.).
+  2. Manages auto-incrementing ID counters for each entity type.
+  3. Tracks the current logged-in user (session state).
+  4. Handles JSON serialisation/deserialisation for persistence.
+  5. Records all actions to an audit log.
 
 The DataStore is injected into every Service via constructor injection
 (Dependency Inversion Principle), ensuring services never depend on
