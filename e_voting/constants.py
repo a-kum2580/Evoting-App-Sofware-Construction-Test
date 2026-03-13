@@ -118,3 +118,4 @@ ADMIN_ROLE_DESCRIPTIONS = {
     "election_officer": "Manage polls and candidates",
     "station_manager": "Manage stations and verify voters",
     "auditor": "Read-only access",
+}
