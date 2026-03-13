@@ -29,10 +29,10 @@
       "gender": "M",
       "education": "Doctorate",
       "party": "16",
-      "manifesto": "Make Ntinda great again",
-      "address": "Ntinda",
+      "manifesto": "make ntinda great again",
+      "address": "ntinda",
       "phone": "0785643234",
-      "email": "oscar@gmail.com",
+      "email": "oscar@gmaill.com",
       "has_criminal_record": false,
       "years_experience": 3,
       "is_active": true,
@@ -72,15 +72,17 @@
         {
           "position_id": 1,
           "position_title": "chairman",
-          "candidate_ids": [],
+          "candidate_ids": [
+            1
+          ],
           "max_winners": 2
         }
       ],
       "station_ids": [
         1
       ],
-      "status": "draft",
-      "total_votes_cast": 0,
+      "status": "open",
+      "total_votes_cast": 1,
       "created_at": "2026-03-13 19:28:03.497518",
       "created_by": "admin"
     }
@@ -116,7 +118,9 @@
       "station_id": 1,
       "is_verified": true,
       "is_active": true,
-      "has_voted_in": [],
+      "has_voted_in": [
+        1
+      ],
       "registered_at": "2026-03-13 19:21:01.101682",
       "role": "voter"
     }
@@ -145,7 +149,18 @@
     }
   },
   "admin_id_counter": 3,
-  "votes": [],
+  "votes": [
+    {
+      "vote_id": "ba6fc7db4d7fecb71",
+      "poll_id": 1,
+      "position_id": 1,
+      "candidate_id": 1,
+      "voter_id": 1,
+      "station_id": 1,
+      "timestamp": "2026-03-13 19:35:44.650573",
+      "abstained": false
+    }
+  ],
   "audit_log": [
     {
       "timestamp": "2026-03-13 19:02:07.635885",
@@ -284,6 +299,54 @@
       "action": "LOGOUT",
       "user": "57K7ZUOLJKGD",
       "details": "Voter logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:30:34.052262",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:31:53.581330",
+      "action": "UPDATE_CANDIDATE",
+      "user": "admin",
+      "details": "Updated candidate: oscar (ID: 2)"
+    },
+    {
+      "timestamp": "2026-03-13 19:33:13.032818",
+      "action": "UPDATE_POLL",
+      "user": "admin",
+      "details": "Updated poll: chairman"
+    },
+    {
+      "timestamp": "2026-03-13 19:34:05.792132",
+      "action": "ASSIGN_CANDIDATES",
+      "user": "admin",
+      "details": "Updated candidates for poll: chairman"
+    },
+    {
+      "timestamp": "2026-03-13 19:34:25.912467",
+      "action": "OPEN_POLL",
+      "user": "admin",
+      "details": "Opened poll: chairman"
+    },
+    {
+      "timestamp": "2026-03-13 19:35:08.663934",
+      "action": "LOGOUT",
+      "user": "admin",
+      "details": "Admin logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:35:17.728041",
+      "action": "LOGIN",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:35:44.650653",
+      "action": "CAST_VOTE",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voted in poll: chairman (Hash: ba6fc7db4d7fecb7)"
     }
   ]
 }
