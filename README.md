@@ -4,12 +4,11 @@
 **University:** Uganda Christian University  
 **Task:** Refactor a monolithic 1,632-line Python console application into a modular, object-oriented project while preserving identical behaviour.
 
----
 
 ## Table of Contents
 
-1. [What Was Required](#what-was-required)
-2. [What Was Implemented](#what-was-implemented)
+1. [What Is Required](#what-was-required)
+2. [What Is Implemented](#what-was-implemented)
 3. [Project Structure](#project-structure)
 4. [Architecture & Design Decisions](#architecture--design-decisions)
 5. [SOLID Principles Applied](#solid-principles-applied)
@@ -20,7 +19,6 @@
 10. [Original Features Preserved](#original-features-preserved)
 11. [Team Contributions](#team-contributions)
 
----
 
 ## What Is Required
 
@@ -40,7 +38,6 @@ Deliverables:
 - A GitHub repository with all source files
 - A brief report/README.md (1–2 pages) explaining the structure and design decisions
 
----
 
 ## What Was Implemented
 
@@ -97,7 +94,7 @@ The monolith mixed input reading, business validation, data mutation, and output
 
 ### 5. Working Application
 
-Every original feature was tested and works identically:
+Every original feature was tested and works:
 
 - Admin login with default credentials (`admin` / `admin123`)
 - Candidate CRUD with age/education eligibility checks
@@ -117,9 +114,8 @@ Every original feature was tested and works identically:
 - Masked password input with yellow asterisks (cross-platform)
 - ANSI-colored console interface with themed screens
 
-### 6. Report (10% weight) — THIS README
+### 6. Report(THIS README)
 
----
 
 ## Project Structure
 
@@ -169,7 +165,6 @@ software-construction/
 
 **32 source files** with clear single responsibilities, compared to the original **1 file** with mixed concerns.
 
----
 
 ## Architecture & Design Decisions
 
@@ -197,7 +192,6 @@ The admin dashboard has 31 distinct menu actions across 6 categories. Rather tha
 
 Dataclasses would reduce boilerplate, but the models need custom `to_dict()`/`from_dict()` methods with `.get()` defaults for backwards-compatible JSON loading. Regular classes with explicit `__init__` make the serialisation logic clearer and avoid hidden magic.
 
----
 
 ## SOLID Principles Applied
 
@@ -327,7 +321,6 @@ voter_ui = VoterUI(store, vote_service, result_service, auth_service, voter_serv
 - UI classes can be tested with mock services
 - Changing how data is stored only affects `DataStore`, not 8 services and 3 UI classes
 
----
 
 ## Object-Oriented Design Concepts Applied
 
@@ -426,7 +419,6 @@ No class in the project extends another class. All relationships are composition
 
 - **Session polymorphism:** Both `Admin` and `Voter` objects are stored in `store.current_user` and accessed through a common set of attributes (`.id`, `.full_name`).
 
----
 
 ## Other Clean Code & Design Principles Applied
 
@@ -498,7 +490,6 @@ Modules interact through narrow, well-defined interfaces:
 | **Soft Delete** | All major entities use `is_active` flag instead of physical deletion |
 | **Audit Trail** | `DataStore.log_action()` records every significant operation with timestamp, actor, and details |
 
----
 
 ## What Was Not Done & Why
 
@@ -513,7 +504,6 @@ Modules interact through narrow, well-defined interfaces:
 | **No logging framework** | The original uses a custom audit log (list of dicts). Replacing it with Python's `logging` module would change the audit log format and break identical behaviour. |
 | **No role-based access enforcement in services** | The original code does not enforce role checks in business logic — it relies on the UI showing different menus to different roles. Moving role checks into services would change the architecture and potentially alter behaviour edge cases. The original pattern was preserved. |
 
----
 
 ## How to Run
 
@@ -532,7 +522,6 @@ python3 app.py
 6. Log in as the voter → cast a vote
 7. Log in as admin → close the poll → view results
 
----
 
 ## Original Features Preserved
 
@@ -556,14 +545,13 @@ All features from the original monolith work identically:
 - Masked password input with yellow asterisks
 - ANSI-colored themed console interface
 
----
 
 ## Team Contributions
 
 | Member | Modules | Focus Area |
 |---|---|---|
-| **Mukama Joseph B24267** | `constants.py`, `models/` (all 7 model files) | Data layer — domain models, named constants, persistence |
-| **Anna Akumu B24782** | `ui/console.py`, `ui/auth_ui.py`, `services/auth_service.py`, `services/station_service.py`, `services/candidate_service.py`,`store.py` | UI framework — colors, formatting, authentication flow |
-| **Namaganda Precious.W B24745** |   `ui/admin/candidate_screens.py`, `ui/admin/station_screens.py`, `ui/admin/poll_screens.py`, `ui/admin/voter_screens.py`, | Candidate & station management |
-| **Odongkara Oscar** | `services/poll_service.py`, `services/vote_service.py`, `services/voter_service.py`, `services/admin_service.py`, `ui/admin/admin_mgmt_screens.py` | Poll lifecycle, voting process, voter/admin management |
-| **Orianga Absolom.Jr B20098** | `services/result_service.py`, `ui/voter_ui.py`, `ui/admin/results_screens.py`, `ui/admin/admin_ui.py`, `ui/admin/__init__.py`, `app.py`, `README.md` | Results & reports, voter UI, admin coordinator, integration, documentation |
+| **Mukama Joseph B24267 S23B23/036** | `constants.py`, `models/` (all 7 model files) | Data layer — domain models, named constants, persistence |
+| **Anna Akumu B24782 S23B23/094** | `ui/console.py`, `ui/auth_ui.py`, `services/auth_service.py`, `services/station_service.py`, `services/candidate_service.py`,`store.py` | UI framework — colors, formatting, authentication flow |
+| **Namaganda Precious.W B24745 S23B23/092** |   `ui/admin/candidate_screens.py`, `ui/admin/station_screens.py`, `ui/admin/poll_screens.py`, `ui/admin/voter_screens.py`, | Candidate & station management |
+| **Odongkara Oscar B24774 S23B23/085** | `services/poll_service.py`, `services/vote_service.py`, `services/voter_service.py`, `services/admin_service.py`, `ui/admin/admin_mgmt_screens.py` | Poll lifecycle, voting process, voter/admin management |
+| **Orianga Absolom.Jr B20098 S23B23/075** | `services/result_service.py`, `ui/voter_ui.py`, `ui/admin/results_screens.py`, `ui/admin/admin_ui.py`, `ui/admin/__init__.py`, `app.py`, `README.md` | Results & reports, voter UI, admin coordinator, integration, documentation |
