@@ -175,7 +175,7 @@ class PollService:
             return None, "Poll not found."
         if poll.is_open():
             return None, "Cannot update an open poll. Close it first."
-        if poll.is_closed() and poll.total_votes_cast > 0:
+        if poll.is_closed() and poll.total_votes_cast:
             return None, "Cannot update a poll with votes."
         for key, value in updates.items():
             if value is not None and hasattr(poll, key):
@@ -258,9 +258,10 @@ class PollService:
         Only candidates who meet the position's minimum age requirement
         and are active/approved are included.
         Returns the count of valid candidates assigned."""
+        no_candidates_assigned = 0
         poll = self._store.polls.get(poll_id)
         if not poll or position_index >= len(poll.positions):
-            return 0
+            return no_candidates_assigned
 
         poll_pos = poll.positions[position_index]
         position = self._store.positions.get(poll_pos.position_id)
