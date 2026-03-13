@@ -563,8 +563,8 @@ All features from the original monolith work identically:
 
 | Member | Modules | Focus Area |
 |---|---|---|
-| ** Mukama Joseph B24267** | `constants.py`, `models/` (all 7 model files) | Data layer — domain models, named constants, persistence |
+| **Mukama Joseph B24267** | `constants.py`, `models/` (all 7 model files) | Data layer — domain models, named constants, persistence |
 | **Anna Akumu B24782** | `ui/console.py`, `ui/auth_ui.py`, `services/auth_service.py`, `services/station_service.py`, `services/candidate_service.py`,`store.py` | UI framework — colors, formatting, authentication flow |
-| ** Namaganda Precious.W B24745** |   `ui/admin/candidate_screens.py`, `ui/admin/station_screens.py`, `ui/admin/poll_screens.py`, `ui/admin/voter_screens.py`, | Candidate & station management |
-| **Odongkara Oscar ** | `services/poll_service.py`, `services/vote_service.py`, `services/voter_service.py`, `services/admin_service.py`, `ui/admin/admin_mgmt_screens.py` | Poll lifecycle, voting process, voter/admin management |
+| **Namaganda Precious.W B24745** |   `ui/admin/candidate_screens.py`, `ui/admin/station_screens.py`, `ui/admin/poll_screens.py`, `ui/admin/voter_screens.py`, | Candidate & station management |
+| **Odongkara Oscar** | `services/poll_service.py`, `services/vote_service.py`, `services/voter_service.py`, `services/admin_service.py`, `ui/admin/admin_mgmt_screens.py` | Poll lifecycle, voting process, voter/admin management |
 | **Orianga Absolom.Jr B20098** | `services/result_service.py`, `ui/voter_ui.py`, `ui/admin/results_screens.py`, `ui/admin/admin_ui.py`, `ui/admin/__init__.py`, `app.py`, `README.md` | Results & reports, voter UI, admin coordinator, integration, documentation |
