@@ -4,7 +4,7 @@
 **University:** Uganda Christian University  
 **Task:** Refactor a monolithic 1,632-line Python console application into a modular, object-oriented project while preserving identical behaviour.
 
----
+
 
 ## Table of Contents
 
@@ -20,7 +20,7 @@
 10. [Original Features Preserved](#original-features-preserved)
 11. [Team Contributions](#team-contributions)
 
----
+
 
 ## What Was Required
 
@@ -40,7 +40,6 @@ Deliverables:
 - A GitHub repository with all source files
 - A brief report/README.md (1–2 pages) explaining the structure and design decisions
 
----
 
 ## What Was Implemented
 
