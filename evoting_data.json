@@ -1,0 +1,352 @@
+{
+  "candidates": {
+    "1": {
+      "id": 1,
+      "full_name": "anna akumu",
+      "national_id": "cm32rf456778",
+      "date_of_birth": "1989-02-12",
+      "age": 37,
+      "gender": "F",
+      "education": "Master's Degree",
+      "party": "NUP",
+      "manifesto": "I will work for for you",
+      "address": "mukono",
+      "phone": "0706807724",
+      "email": "anna@gmail.com",
+      "has_criminal_record": false,
+      "years_experience": 23,
+      "is_active": true,
+      "is_approved": true,
+      "created_at": "2026-03-13 19:05:08.465813",
+      "created_by": "admin"
+    },
+    "2": {
+      "id": 2,
+      "full_name": "oscar",
+      "national_id": "cd544r6yh7jh",
+      "date_of_birth": "1976-09-09",
+      "age": 49,
+      "gender": "M",
+      "education": "Doctorate",
+      "party": "16",
+      "manifesto": "make ntinda great again",
+      "address": "ntinda",
+      "phone": "0785643234",
+      "email": "oscar@gmaill.com",
+      "has_criminal_record": false,
+      "years_experience": 3,
+      "is_active": true,
+      "is_approved": true,
+      "created_at": "2026-03-13 19:14:29.379776",
+      "created_by": "admin"
+    }
+  },
+  "candidate_id_counter": 3,
+  "voting_stations": {
+    "1": {
+      "id": 1,
+      "name": "Ntinda",
+      "location": "Ntinda",
+      "region": "Kampala",
+      "capacity": 200,
+      "registered_voters": 0,
+      "supervisor": "Namaganda",
+      "contact": "0765325467",
+      "opening_time": "09:30",
+      "closing_time": "18:00",
+      "is_active": true,
+      "created_at": "2026-03-13 19:12:40.758225",
+      "created_by": "admin"
+    }
+  },
+  "station_id_counter": 2,
+  "polls": {
+    "1": {
+      "id": 1,
+      "title": "chairman",
+      "description": "election",
+      "election_type": "general",
+      "start_date": "2026-03-12",
+      "end_date": "2026-04-02",
+      "positions": [
+        {
+          "position_id": 1,
+          "position_title": "chairman",
+          "candidate_ids": [
+            1
+          ],
+          "max_winners": 2
+        }
+      ],
+      "station_ids": [
+        1
+      ],
+      "status": "open",
+      "total_votes_cast": 1,
+      "created_at": "2026-03-13 19:28:03.497518",
+      "created_by": "admin"
+    }
+  },
+  "poll_id_counter": 2,
+  "positions": {
+    "1": {
+      "id": 1,
+      "title": "chairman",
+      "description": "election",
+      "level": "Local",
+      "max_winners": 2,
+      "min_candidate_age": 27,
+      "is_active": true,
+      "created_at": "2026-03-13 19:26:58.649721",
+      "created_by": "admin"
+    }
+  },
+  "position_id_counter": 2,
+  "voters": {
+    "1": {
+      "id": 1,
+      "full_name": "jojo jo",
+      "national_id": "cmf5t67yh45r6",
+      "date_of_birth": "1976-05-03",
+      "age": 49,
+      "gender": "M",
+      "address": "Ntinda",
+      "phone": "0392963817",
+      "email": "jojo@gmail.com",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "voter_card_number": "57K7ZUOLJKGD",
+      "station_id": 1,
+      "is_verified": true,
+      "is_active": true,
+      "has_voted_in": [
+        1
+      ],
+      "registered_at": "2026-03-13 19:21:01.101682",
+      "role": "voter"
+    }
+  },
+  "voter_id_counter": 2,
+  "admins": {
+    "1": {
+      "id": 1,
+      "username": "admin",
+      "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "full_name": "System Administrator",
+      "email": "admin@evote.com",
+      "role": "super_admin",
+      "created_at": "2026-03-13 19:01:54.385899",
+      "is_active": true
+    },
+    "2": {
+      "id": 2,
+      "username": "systems admin",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "full_name": "solomon k",
+      "email": "solomon@gmail.com",
+      "role": "super_admin",
+      "created_at": "2026-03-13 19:03:12.313740",
+      "is_active": true
+    }
+  },
+  "admin_id_counter": 3,
+  "votes": [
+    {
+      "vote_id": "ba6fc7db4d7fecb71",
+      "poll_id": 1,
+      "position_id": 1,
+      "candidate_id": 1,
+      "voter_id": 1,
+      "station_id": 1,
+      "timestamp": "2026-03-13 19:35:44.650573",
+      "abstained": false
+    }
+  ],
+  "audit_log": [
+    {
+      "timestamp": "2026-03-13 19:02:07.635885",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:03:12.313767",
+      "action": "CREATE_ADMIN",
+      "user": "admin",
+      "details": "Created admin: systems admin (Role: super_admin)"
+    },
+    {
+      "timestamp": "2026-03-13 19:05:08.465838",
+      "action": "CREATE_CANDIDATE",
+      "user": "admin",
+      "details": "Created candidate: anna akumu (ID: 1)"
+    },
+    {
+      "timestamp": "2026-03-13 19:10:03.651434",
+      "action": "LOGIN_FAILED",
+      "user": "precious",
+      "details": "Invalid admin credentials"
+    },
+    {
+      "timestamp": "2026-03-13 19:11:30.503521",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:12:40.758252",
+      "action": "CREATE_STATION",
+      "user": "admin",
+      "details": "Created station: Ntinda (ID: 1)"
+    },
+    {
+      "timestamp": "2026-03-13 19:14:29.379806",
+      "action": "CREATE_CANDIDATE",
+      "user": "admin",
+      "details": "Created candidate: oscar (ID: 2)"
+    },
+    {
+      "timestamp": "2026-03-13 19:15:34.872057",
+      "action": "LOGOUT",
+      "user": "admin",
+      "details": "Admin logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:18:53.891008",
+      "action": "LOGIN_FAILED",
+      "user": "",
+      "details": "Invalid voter credentials"
+    },
+    {
+      "timestamp": "2026-03-13 19:19:39.791938",
+      "action": "LOGIN_FAILED",
+      "user": "",
+      "details": "Invalid voter credentials"
+    },
+    {
+      "timestamp": "2026-03-13 19:21:01.101696",
+      "action": "REGISTER",
+      "user": "jojo jo",
+      "details": "New voter registered with card: 57K7ZUOLJKGD"
+    },
+    {
+      "timestamp": "2026-03-13 19:21:30.039015",
+      "action": "LOGIN_FAILED",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter not verified"
+    },
+    {
+      "timestamp": "2026-03-13 19:21:42.980151",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:19.631801",
+      "action": "VERIFY_ALL_VOTERS",
+      "user": "admin",
+      "details": "Verified 1 voters"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:24.215350",
+      "action": "LOGOUT",
+      "user": "admin",
+      "details": "Admin logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:36.013761",
+      "action": "LOGIN",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:48.467819",
+      "action": "LOGOUT",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:22:56.029652",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:26:58.649747",
+      "action": "CREATE_POSITION",
+      "user": "admin",
+      "details": "Created position: chairman (ID: 1)"
+    },
+    {
+      "timestamp": "2026-03-13 19:28:03.497577",
+      "action": "CREATE_POLL",
+      "user": "admin",
+      "details": "Created poll: chairman (ID: 1)"
+    },
+    {
+      "timestamp": "2026-03-13 19:28:52.559205",
+      "action": "LOGOUT",
+      "user": "admin",
+      "details": "Admin logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:29:07.018743",
+      "action": "LOGIN",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:29:41.389253",
+      "action": "LOGOUT",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:30:34.052262",
+      "action": "LOGIN",
+      "user": "admin",
+      "details": "Admin login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:31:53.581330",
+      "action": "UPDATE_CANDIDATE",
+      "user": "admin",
+      "details": "Updated candidate: oscar (ID: 2)"
+    },
+    {
+      "timestamp": "2026-03-13 19:33:13.032818",
+      "action": "UPDATE_POLL",
+      "user": "admin",
+      "details": "Updated poll: chairman"
+    },
+    {
+      "timestamp": "2026-03-13 19:34:05.792132",
+      "action": "ASSIGN_CANDIDATES",
+      "user": "admin",
+      "details": "Updated candidates for poll: chairman"
+    },
+    {
+      "timestamp": "2026-03-13 19:34:25.912467",
+      "action": "OPEN_POLL",
+      "user": "admin",
+      "details": "Opened poll: chairman"
+    },
+    {
+      "timestamp": "2026-03-13 19:35:08.663934",
+      "action": "LOGOUT",
+      "user": "admin",
+      "details": "Admin logged out"
+    },
+    {
+      "timestamp": "2026-03-13 19:35:17.728041",
+      "action": "LOGIN",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voter login successful"
+    },
+    {
+      "timestamp": "2026-03-13 19:35:44.650653",
+      "action": "CAST_VOTE",
+      "user": "57K7ZUOLJKGD",
+      "details": "Voted in poll: chairman (Hash: ba6fc7db4d7fecb7)"
+    }
+  ]
+}
