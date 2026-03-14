@@ -5,6 +5,7 @@
 **Task:** Refactor a monolithic 1,632-line Python console application into a modular, object-oriented project while preserving identical behaviour.
 
 
+
 ## Table of Contents
 
 1. [What Is Required](#what-was-required)
@@ -18,6 +19,7 @@
 9. [How to Run](#how-to-run)
 10. [Original Features Preserved](#original-features-preserved)
 11. [Team Contributions](#team-contributions)
+
 
 
 ## What Is Required
