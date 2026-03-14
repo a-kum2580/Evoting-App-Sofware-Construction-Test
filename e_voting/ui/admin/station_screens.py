@@ -126,4 +126,37 @@ class StationScreens:
         success(f"Station '{name}' updated successfully!")
         pause()
 
-   
+    def delete(self):
+        clear_screen()
+        header("DELETE VOTING STATION", THEME_ADMIN)
+        stations = self._stations.get_all()
+        if not stations:
+            print(); info("No stations found."); pause(); return
+        print()
+        for sid, station in stations.items():
+            status = (status_badge("Active", True) if station.is_active
+                      else status_badge("Inactive", False))
+            print(f"  {THEME_ADMIN}{station.id}.{RESET} "
+                  f"{station.name} {DIM}- {station.location}{RESET} {status}")
+        try:
+            sid = int(prompt("\nEnter Station ID to delete: "))
+        except ValueError:
+            error("Invalid input."); pause(); return
+        station = self._stations.get(sid)
+        if not station:
+            error("Station not found."); pause(); return
+        if not station.is_active:
+            warning("Station is already inactive.")
+            pause(); return
+
+        confirm = prompt(
+            f"Are you sure you want to delete "
+            f"'{station.name}'? (yes/no): "
+        ).lower()
+        if confirm == "yes":
+            self._stations.deactivate(sid, self._store.current_user.username)
+            print()
+            success(f"Station '{station.name}' has been deactivated.")
+        else:
+            info("Deletion cancelled.")
+        pause()
